@@ -1,5 +1,4 @@
 import torch
-import torch
 import numpy as np
 import matplotlib.pyplot as plt
 from tqdm.auto import tqdm
@@ -18,29 +17,60 @@ def train_epoch(train_model,
                 train_dataloader, 
                 train_loss_fn, 
                 train_optimizer, 
-                args,
-                ):
-    
+                args):
+    """
+    Train the model for one epoch with optional mixed precision (fp16) 
+    and gradient accumulation.
+    """
+
     global global_step
     start = time.time()
     train_model.train()
     train_loss = []
-    for image_batch, labels_batch, _ in tqdm(train_dataloader, disable=args.on_cluster):
 
-        image_batch = image_batch.to(train_device)
-        labels = labels_batch.to(train_device)
-        output = train_model(image_batch)
-        loss = train_loss_fn(output, labels.clone()).mean()
-        train_optimizer.zero_grad()
-        loss.backward()
+    # gradient accumulation steps
+    accumulation_steps = getattr(args, "accumulation_steps", 1)
 
+    # set up GradScaler if fp16 is enabled
+    scaler = torch.cuda.amp.GradScaler(enabled=args.fp16)
+
+    for i, (image_batch, labels_batch, _) in enumerate(
+        tqdm(train_dataloader, disable=args.on_cluster)
+    ):
+        image_batch = image_batch.to(train_device, non_blocking=True)
+        labels = labels_batch.to(train_device, non_blocking=True)
+
+        if args.fp16:
+            with torch.cuda.amp.autocast():
+                output = train_model(image_batch)
+                loss = train_loss_fn(output, labels.clone()).mean()
+                loss = loss / accumulation_steps
+        else:
+            output = train_model(image_batch)
+            loss = train_loss_fn(output, labels.clone()).mean()
+            loss = loss / accumulation_steps
+
+        scaler.scale(loss).backward()
+
+        # optimizer step after accumulation_steps
+        if (i + 1) % accumulation_steps == 0:
+            torch.nn.utils.clip_grad_norm_(train_model.parameters(), args.clip)
+            scaler.step(train_optimizer)
+            scaler.update()
+            train_optimizer.zero_grad(set_to_none=True)
+            global_step += 1  # update global step only after optimizer step
+
+        train_loss.append(loss.detach().cpu().numpy() * accumulation_steps)
+
+    # handle remainder if dataloader not divisible by accumulation_steps
+    if (i + 1) % accumulation_steps != 0:
         torch.nn.utils.clip_grad_norm_(train_model.parameters(), args.clip)
-
-        train_optimizer.step()
-        train_loss.append(loss.detach().cpu().numpy())
+        scaler.step(train_optimizer)
+        scaler.update()
+        train_optimizer.zero_grad(set_to_none=True)
+        global_step += 1
 
     end = time.time()
-
     return np.mean(train_loss), end - start
     
 

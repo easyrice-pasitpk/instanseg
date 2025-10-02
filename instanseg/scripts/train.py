@@ -72,6 +72,8 @@ parser.add_argument("-f","--f", default = None, type = str, help = "ignore, this
 parser.add_argument('-rng_seed', '--rng_seed', default=None, type=int, help = "Optional seed for the random number generator")
 parser.add_argument('-use_deterministic', '--use_deterministic', default=False, type=lambda x: (str(x).lower() == 'true'), help = "Whether to use deterministic algorithms (default=False)")
 parser.add_argument('-tile', '--tile_size', default=256, type=int, help = "Tile sizes for the input images")
+parser.add_argument('-accumulation_steps', '--accumulation_steps', default=1, type=int, help = "Number of gradient accumulation steps")
+parser.add_argument('-fp16', '--fp16', default=False, type=lambda x: (str(x).lower() == 'true'), help = "Whether to use mixed precision training")
 
 def main(model, loss_fn, train_loader, test_loader, num_epochs=1000, epoch_name='output_epoch'):
     from instanseg.utils.AI_utils import optimize_hyperparameters, train_epoch, test_epoch
