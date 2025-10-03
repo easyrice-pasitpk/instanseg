@@ -1,0 +1,34 @@
+bioimageio_utils.py (2): pkg_resources is deprecated as an API. See https://setuptools.pypa.io/en/latest/pkg_resources.html. The pkg_resources package is slated for removal as early as 2025-11-30. Refrain from using this package or pin to Setuptools<81.
+Saving results to /project/lt200377-mpind/segment/models/instanseg/ez20251002_instseg
+Setting RNG seed to 5555
+Generating InstanSeg_UNet
+Loading dataset from  /project/lt200377-mpind/segment/ez20251002_dataset.pth
+Datasets available in  Train
+{('EZ-20251002', 103)}
+After filtering using:
+{('EZ-20251002', 103)}
+Datasets available in  Validation
+{('EZ-20251002', 5)}
+After filtering using:
+{('EZ-20251002', 5)}
+Hotstart for 10 epochs with binary_xloss and dice_loss
+Epoch: 0
+  0%|          | 0/63 [00:00<?, ?it/s]augmentations.py (839): Pixel size None is not a float <class 'NoneType'>, check metadata
+augmentations.py (839): Pixel size None is not a float <class 'NoneType'>, check metadata
+augmentations.py (839): Pixel size None is not a float <class 'NoneType'>, check metadata
+augmentations.py (839): Pixel size None is not a float <class 'NoneType'>, check metadata
+augmentations.py (839): Pixel size None is not a float <class 'NoneType'>, check metadata
+augmentations.py (839): Pixel size None is not a float <class 'NoneType'>, check metadata
+augmentations.py (839): Pixel size None is not a float <class 'NoneType'>, check metadata
+augmentations.py (839): Pixel size None is not a float <class 'NoneType'>, check metadata
+  2%|▏         | 1/63 [00:44<45:40, 44.20s/it]  3%|▎         | 2/63 [00:44<18:56, 18.64s/it]  5%|▍         | 3/63 [00:45<10:27, 10.46s/it]  6%|▋         | 4/63 [00:46<06:28,  6.59s/it]  8%|▊         | 5/63 [00:46<04:18,  4.46s/it] 10%|▉         | 6/63 [00:47<03:00,  3.17s/it] 11%|█         | 7/63 [00:48<02:12,  2.37s/it] 13%|█▎        | 8/63 [00:49<01:41,  1.84s/it] 14%|█▍        | 9/63 [00:49<01:20,  1.49s/it] 16%|█▌        | 10/63 [00:50<01:05,  1.23s/it] 17%|█▋        | 11/63 [00:51<00:56,  1.08s/it] 19%|█▉        | 12/63 [00:51<00:49,  1.03it/s] 21%|██        | 13/63 [00:52<00:44,  1.13it/s] 22%|██▏       | 14/63 [00:53<00:41,  1.18it/s] 24%|██▍       | 15/63 [00:54<00:39,  1.23it/s] 25%|██▌       | 16/63 [00:54<00:36,  1.28it/s] 27%|██▋       | 17/63 [00:55<00:34,  1.33it/s] 29%|██▊       | 18/63 [00:56<00:33,  1.34it/s] 30%|███       | 19/63 [00:56<00:32,  1.35it/s] 32%|███▏      | 20/63 [00:57<00:31,  1.37it/s] 33%|███▎      | 21/63 [00:58<00:30,  1.39it/s] 35%|███▍      | 22/63 [00:59<00:29,  1.41it/s] 37%|███▋      | 23/63 [00:59<00:29,  1.37it/s] 38%|███▊      | 24/63 [01:00<00:27,  1.41it/s] 40%|███▉      | 25/63 [01:01<00:27,  1.38it/s] 41%|████▏     | 26/63 [01:01<00:26,  1.39it/s] 43%|████▎     | 27/63 [01:02<00:25,  1.40it/s] 44%|████▍     | 28/63 [01:03<00:25,  1.39it/s] 46%|████▌     | 29/63 [01:04<00:24,  1.37it/s] 48%|████▊     | 30/63 [01:04<00:24,  1.37it/s] 49%|████▉     | 31/63 [01:05<00:23,  1.37it/s] 51%|█████     | 32/63 [01:07<00:30,  1.01it/s] 52%|█████▏    | 33/63 [01:07<00:27,  1.10it/s] 54%|█████▍    | 34/63 [01:10<00:37,  1.31s/it] 56%|█████▌    | 35/63 [01:10<00:31,  1.13s/it] 57%|█████▋    | 36/63 [01:11<00:27,  1.01s/it] 59%|█████▊    | 37/63 [01:12<00:24,  1.05it/s] 60%|██████    | 38/63 [01:13<00:21,  1.14it/s] 62%|██████▏   | 39/63 [01:13<00:20,  1.19it/s] 63%|██████▎   | 40/63 [01:15<00:25,  1.13s/it] 65%|██████▌   | 41/63 [01:16<00:21,  1.01it/s] 67%|██████▋   | 42/63 [01:18<00:28,  1.37s/it] 68%|██████▊   | 43/63 [01:19<00:23,  1.17s/it] 70%|██████▉   | 44/63 [01:20<00:19,  1.04s/it] 71%|███████▏  | 45/63 [01:21<00:18,  1.01s/it] 73%|███████▎  | 46/63 [01:21<00:15,  1.06it/s] 75%|███████▍  | 47/63 [01:22<00:13,  1.15it/s] 76%|███████▌  | 48/63 [01:24<00:16,  1.11s/it] 78%|███████▊  | 49/63 [01:24<00:13,  1.00it/s] 79%|███████▉  | 50/63 [01:27<00:18,  1.43s/it] 81%|████████  | 51/63 [01:28<00:14,  1.24s/it] 83%|████████▎ | 52/63 [01:28<00:11,  1.08s/it] 84%|████████▍ | 53/63 [01:29<00:10,  1.00s/it] 86%|████████▌ | 54/63 [01:30<00:08,  1.09it/s] 87%|████████▋ | 55/63 [01:31<00:06,  1.19it/s] 89%|████████▉ | 56/63 [01:32<00:07,  1.07s/it] 90%|█████████ | 57/63 [01:33<00:05,  1.03it/s] 92%|█████████▏| 58/63 [01:35<00:06,  1.20s/it] 94%|█████████▎| 59/63 [01:35<00:04,  1.05s/it] 95%|█████████▌| 60/63 [01:36<00:02,  1.01it/s] 97%|█████████▋| 61/63 [01:37<00:01,  1.01it/s] 98%|█████████▊| 62/63 [01:38<00:00,  1.11it/s]100%|██████████| 63/63 [01:38<00:00,  1.38it/s]100%|██████████| 63/63 [01:38<00:00,  1.57s/it]
+  0%|          | 0/13 [00:00<?, ?it/s]augmentations.py (839): Pixel size None is not a float <class 'NoneType'>, check metadata
+augmentations.py (839): Pixel size None is not a float <class 'NoneType'>, check metadata
+augmentations.py (839): Pixel size None is not a float <class 'NoneType'>, check metadata
+augmentations.py (839): Pixel size None is not a float <class 'NoneType'>, check metadata
+augmentations.py (839): Pixel size None is not a float <class 'NoneType'>, check metadata
+augmentations.py (839): Pixel size None is not a float <class 'NoneType'>, check metadata
+augmentations.py (839): Pixel size None is not a float <class 'NoneType'>, check metadata
+augmentations.py (839): Pixel size None is not a float <class 'NoneType'>, check metadata
+  8%|▊         | 1/13 [00:32<06:35, 32.95s/it] 15%|█▌        | 2/13 [00:33<02:31, 13.81s/it] 23%|██▎       | 3/13 [00:33<01:16,  7.67s/it] 31%|███       | 4/13 [00:34<00:43,  4.79s/it] 38%|███▊      | 5/13 [00:34<00:25,  3.20s/it] 46%|████▌     | 6/13 [00:34<00:15,  2.24s/it] 54%|█████▍    | 7/13 [00:35<00:09,  1.63s/it] 62%|██████▏   | 8/13 [00:35<00:06,  1.23s/it] 69%|██████▉   | 9/13 [00:36<00:03,  1.03it/s] 77%|███████▋  | 10/13 [00:36<00:02,  1.27it/s] 85%|████████▍ | 11/13 [00:37<00:01,  1.34it/s] 92%|█████████▏| 12/13 [00:37<00:00,  1.58it/s]100%|██████████| 13/13 [00:37<00:00,  2.00it/s]100%|██████████| 13/13 [00:37<00:00,  2.89s/it]
+slurmstepd: error: *** JOB 3062032 ON lanta-g-003 CANCELLED AT 2025-10-03T00:58:26 ***

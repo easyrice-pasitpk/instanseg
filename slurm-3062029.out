@@ -1,0 +1,68 @@
+bioimageio_utils.py (2): pkg_resources is deprecated as an API. See https://setuptools.pypa.io/en/latest/pkg_resources.html. The pkg_resources package is slated for removal as early as 2025-11-30. Refrain from using this package or pin to Setuptools<81.
+Saving results to /project/lt200377-mpind/segment/models/instanseg/ez20251002_instseg
+Setting RNG seed to 5555
+Generating InstanSeg_UNet
+Loading dataset from  /project/lt200377-mpind/segment/ez20251002_dataset.pth
+Datasets available in  Train
+{('EZ-20251002', 103)}
+After filtering using:
+{('EZ-20251002', 103)}
+Datasets available in  Validation
+{('EZ-20251002', 5)}
+After filtering using:
+{('EZ-20251002', 5)}
+Hotstart for 10 epochs with binary_xloss and dice_loss
+Epoch: 0
+  0%|          | 0/63 [00:00<?, ?it/s]augmentations.py (839): Pixel size None is not a float <class 'NoneType'>, check metadata
+augmentations.py (839): Pixel size None is not a float <class 'NoneType'>, check metadata
+augmentations.py (839): Pixel size None is not a float <class 'NoneType'>, check metadata
+augmentations.py (839): Pixel size None is not a float <class 'NoneType'>, check metadata
+augmentations.py (839): Pixel size None is not a float <class 'NoneType'>, check metadata
+augmentations.py (839): Pixel size None is not a float <class 'NoneType'>, check metadata
+augmentations.py (839): Pixel size None is not a float <class 'NoneType'>, check metadata
+augmentations.py (839): Pixel size None is not a float <class 'NoneType'>, check metadata
+  0%|          | 0/63 [00:06<?, ?it/s]
+Traceback (most recent call last):
+  File "/lustrefs/disk/home/pjakkraw/workspace/instanseg/instanseg/scripts/train.py", line 394, in <module>
+    instanseg_training()
+  File "/lustrefs/disk/home/pjakkraw/workspace/instanseg/instanseg/scripts/train.py", line 351, in instanseg_training
+    model, train_losses, test_losses, f1_list, f1_list_cells = main(model, loss_fn, train_loader, test_loader, num_epochs=hot_epochs, epoch_name='hotstart_epoch')
+                                                               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/lustrefs/disk/home/pjakkraw/workspace/instanseg/instanseg/scripts/train.py", line 93, in main
+    train_loss, train_time = train_epoch(model, device, train_loader, loss_fn, optimizer, args = args)
+                             ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/lustrefs/disk/home/pjakkraw/workspace/instanseg/.venv/lib64/python3.11/site-packages/instanseg/utils/AI_utils.py", line 28, in train_epoch
+    for image_batch, labels_batch, _ in tqdm(train_dataloader, disable=args.on_cluster):
+  File "/lustrefs/disk/home/pjakkraw/workspace/instanseg/.venv/lib64/python3.11/site-packages/tqdm/std.py", line 1181, in __iter__
+    for obj in iterable:
+  File "/lustrefs/disk/home/pjakkraw/workspace/instanseg/.venv/lib64/python3.11/site-packages/torch/utils/data/dataloader.py", line 734, in __next__
+    data = self._next_data()
+           ^^^^^^^^^^^^^^^^^
+  File "/lustrefs/disk/home/pjakkraw/workspace/instanseg/.venv/lib64/python3.11/site-packages/torch/utils/data/dataloader.py", line 1516, in _next_data
+    return self._process_data(data, worker_id)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/lustrefs/disk/home/pjakkraw/workspace/instanseg/.venv/lib64/python3.11/site-packages/torch/utils/data/dataloader.py", line 1551, in _process_data
+    data.reraise()
+  File "/lustrefs/disk/home/pjakkraw/workspace/instanseg/.venv/lib64/python3.11/site-packages/torch/_utils.py", line 769, in reraise
+    raise exception
+ValueError: Caught ValueError in DataLoader worker process 0.
+Original Traceback (most recent call last):
+  File "/lustrefs/disk/home/pjakkraw/workspace/instanseg/.venv/lib64/python3.11/site-packages/torch/utils/data/_utils/worker.py", line 349, in _worker_loop
+    data = fetcher.fetch(index)  # type: ignore[possibly-undefined]
+           ^^^^^^^^^^^^^^^^^^^^
+  File "/lustrefs/disk/home/pjakkraw/workspace/instanseg/.venv/lib64/python3.11/site-packages/torch/utils/data/_utils/fetch.py", line 52, in fetch
+    data = [self.dataset[idx] for idx in possibly_batched_index]
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/lustrefs/disk/home/pjakkraw/workspace/instanseg/.venv/lib64/python3.11/site-packages/torch/utils/data/_utils/fetch.py", line 52, in <listcomp>
+    data = [self.dataset[idx] for idx in possibly_batched_index]
+            ~~~~~~~~~~~~^^^^^
+  File "/lustrefs/disk/home/pjakkraw/workspace/instanseg/.venv/lib64/python3.11/site-packages/instanseg/utils/AI_utils.py", line 198, in __getitem__
+    data, label = self.Augmenter(data, label, meta)
+                  ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/lustrefs/disk/home/pjakkraw/workspace/instanseg/.venv/lib64/python3.11/site-packages/instanseg/utils/augmentations.py", line 908, in __call__
+    image, labels = self.duplicate_grayscale_channels(image,
+                    ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/lustrefs/disk/home/pjakkraw/workspace/instanseg/.venv/lib64/python3.11/site-packages/instanseg/utils/augmentations.py", line 790, in duplicate_grayscale_channels
+    raise ValueError(
+ValueError: Image has 2 channels, but model expects 3, check the augmentations pipeline!
+
